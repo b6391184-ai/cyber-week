@@ -26,23 +26,221 @@ section{padding:65px 8%}.heading{display:flex;gap:15px;align-items:center;margin
 <section class="tip"><div class="eyebrow">نصيحة اليوم</div><h2 id="tip"></h2><button onclick="newTip()">نصيحة جديدة</button></section>
 </main><footer>أسبوع الأمن والتقنية · تجربة تعليمية تفاعلية</footer>
 <script>
-const data=[
-["وصلك رابط من جهة غير معروفة ويطلب تسجيل الدخول فورًا. ماذا تفعلين؟",["أضغط الرابط بسرعة","أتحقق من المرسل والرابط قبل الدخول","أرسل كلمة المرور لصديقتي"],1,"التحقق من المرسل والرابط يساعد على تجنب التصيد."],
-["أي خيار أقوى لحماية الحساب؟",["كلمة مرور قصيرة","استخدام كلمة المرور نفسها في كل المواقع","كلمة مرور قوية مع التحقق بخطوتين"],2,"التحقق بخطوتين يضيف طبقة حماية مهمة."],
-["نشرتِ صورة وفي خلفيتها بطاقة تحتوي بيانات شخصية. ما المشكلة؟",["لا توجد مشكلة","قد تكشف الصورة معلومات شخصية دون قصد","الصورة تصبح أجمل"],1,"قد تكشف الصور معلومات أكثر مما نتوقع."],
-["ما التصرف الأفضل مع ملف مجهول وصل في رسالة؟",["فتحه مباشرة","التحقق من مصدره قبل فتحه","إرساله للجميع"],1,"تحققي من المصدر قبل فتح الملفات غير المتوقعة."],
-["ماذا تعني البصمة الرقمية؟",["أثر أنشطتنا على الإنترنت","بصمة الإصبع","نوع من كلمات المرور"],0,"البصمة الرقمية هي الأثر الذي نتركه عبر أنشطتنا الرقمية."],
-["هل كل نتيجة يولدها الذكاء الاصطناعي صحيحة؟",["نعم دائمًا","لا، يجب التحقق من المعلومات المهمة","فقط إذا كانت طويلة"],1,"قد يخطئ الذكاء الاصطناعي، لذا تحققي من المعلومات."],
-["ما الأفضل عند استخدام شبكة واي فاي عامة؟",["إدخال معلومات حساسة بلا حذر","تجنب العمليات الحساسة واستخدام وسائل حماية مناسبة","مشاركة كلمة المرور"],1,"الشبكات العامة تتطلب حذرًا إضافيًا."],
-["ما فائدة تحديث الأجهزة والبرامج؟",["تغيير الشكل فقط","إصلاح ثغرات وتحسين الأمان","إبطاء الجهاز دائمًا"],1,"تتضمن التحديثات غالبًا إصلاحات أمنية."],
-["إذا شككتِ أن رسالة بريد إلكتروني احتيالية، ماذا تفعلين؟",["أعيد توجيهها","أتحقق من المصدر وأبلغ عنها عند الحاجة","أرسل بياناتي للمرسل"],1,"لا تتفاعلي مع الرسائل المشبوهة، وتحققي من مصدرها."],
-["أي سلوك يعكس استخدامًا مسؤولًا للذكاء الاصطناعي؟",["نسخ الإجابة دون مراجعة","التحقق من النتائج وعدم مشاركة بيانات حساسة","إدخال كلمات المرور في أي أداة"],1,"الاستخدام الواعي يشمل التحقق وحماية الخصوصية."]
+const data=const data = [
+  // المستوى السهل: 5 أسئلة، نقطة لكل سؤال
+  {
+    level:"سهل", points:1,
+    q:"وصلك رابط يطلب كلمة مرور حسابك المدرسي بشكل عاجل. ماذا تفعلين؟",
+    a:["أفتح الرابط فورًا","أتحقق من الجهة عبر وسيلة رسمية","أرسل كلمة المرور لصديقتي"],
+    correct:1,
+    why:"التحقق من مصدر الرسالة يساعد على تجنب التصيد وسرقة الحسابات."
+  },
+  {
+    level:"سهل", points:1,
+    q:"ما الخيار الأقوى لحماية حسابك؟",
+    a:["كلمة مرور قصيرة","كلمة المرور نفسها في كل المواقع","كلمة مرور فريدة مع التحقق بخطوتين"],
+    correct:2,
+    why:"كلمة المرور الفريدة والتحقق بخطوتين يضيفان طبقات حماية للحساب."
+  },
+  {
+    level:"سهل", points:1,
+    q:"ما المقصود بالبصمة الرقمية؟",
+    a:["الأثر الذي نتركه عبر أنشطتنا على الإنترنت","بصمة الإصبع فقط","برنامج لحماية الجهاز"],
+    correct:0,
+    why:"تشمل البصمة الرقمية آثار أنشطتنا وتفاعلاتنا عبر الإنترنت."
+  },
+  {
+    level:"سهل", points:1,
+    q:"وصلك ملف غير متوقع من شخص مجهول. ما التصرف الأفضل؟",
+    a:["أفتحه مباشرة","أتحقق من مصدره قبل فتحه","أرسله للجميع"],
+    correct:1,
+    why:"التحقق من المصدر يقلل خطر الملفات الضارة."
+  },
+  {
+    level:"سهل", points:1,
+    q:"هل يمكن أن يخطئ الذكاء الاصطناعي؟",
+    a:["لا، أبدًا","نعم، ويجب التحقق من المعلومات المهمة","فقط إذا كانت الإجابة قصيرة"],
+    correct:1,
+    why:"قد ينتج الذكاء الاصطناعي معلومات غير دقيقة؛ لذا يجب مراجعتها."
+  },
+
+  // المستوى المتوسط: 5 أسئلة، نقطتان لكل سؤال
+  {
+    level:"متوسط", points:2,
+    q:"وصلتك رسالة توصيل تطلب دفع رسوم عبر رابط غير مألوف. كيف تتحققين؟",
+    a:["أدفع لأن المبلغ صغير","أدخل إلى التطبيق الرسمي للتحقق","أرسل بيانات بطاقتي للمرسل"],
+    correct:1,
+    why:"استخدمي التطبيق الرسمي بدل الضغط على رابط الرسالة."
+  },
+  {
+    level:"متوسط", points:2,
+    q:"تريدين استخدام أداة ذكاء اصطناعي لتلخيص ملف فيه أسماء الطالبات وأرقامهن. ما الأفضل؟",
+    a:["أرفع الملف كما هو","أحذف البيانات الشخصية غير الضرورية أولًا","أنشر الملف علنًا"],
+    correct:1,
+    why:"تقليل البيانات الشخصية يحافظ على الخصوصية."
+  },
+  {
+    level:"متوسط", points:2,
+    q:"لماذا من المهم تثبيت التحديثات الأمنية؟",
+    a:["لأنها تغير شكل الجهاز فقط","لأنها قد تصلح ثغرات أمنية","لأنها تمنع جميع المخاطر نهائيًا"],
+    correct:1,
+    why:"قد تتضمن التحديثات إصلاحات لثغرات يستغلها المهاجمون."
+  },
+  {
+    level:"متوسط", points:2,
+    q:"شاهدتِ صورة منتشرة تدّعي وقوع حدث مهم. ماذا تفعلين قبل نشرها؟",
+    a:["أنشرها بسبب كثرة الإعجابات","أتحقق من مصدرها وتاريخها ومصادر موثوقة أخرى","أصدقها إذا كانت واضحة"],
+    correct:1,
+    why:"الانتشار وجودة الصورة لا يثبتان صحتها."
+  },
+  {
+    level:"متوسط", points:2,
+    q:"تطبيق للملاحظات يطلب الوصول إلى موقعك وجهات اتصالك. ما التصرف الأنسب؟",
+    a:["أوافق على كل الصلاحيات","أراجع الصلاحيات وأرفض ما لا يحتاج إليه","أفترض أنه آمن لأنه مجاني"],
+    correct:1,
+    why:"ينبغي أن تتناسب الصلاحيات مع وظيفة التطبيق."
+  },
+
+  // المستوى الصعب والتحليلي: 5 أسئلة، 3 نقاط لكل سؤال
+  {
+    level:"صعب وتحليلي", points:3,
+    q:"وصلتك رسالة تحمل شعار جهة موثوقة، لكنها تطلب رمز التحقق بحجة حماية حسابك. ما الاستنتاج الأفضل؟",
+    a:["الشعار يثبت أنها رسالة حقيقية","طلب رمز التحقق علامة خطر؛ أتواصل مع الجهة رسميًا","أرسل الرمز إذا كانت اللغة سليمة"],
+    correct:1,
+    why:"يمكن تقليد الشعارات. لا تشاركي رموز التحقق، وتواصلي عبر قناة رسمية."
+  },
+  {
+    level:"صعب وتحليلي", points:3,
+    q:"أطلق حساس تسرب المياه إنذارًا، لكن لا توجد مياه ظاهرة. ما الخطوة المنطقية؟",
+    a:["أعطل النظام نهائيًا","أفحص الحساس ومكانه ثم أعيد الاختبار","أتجاهل جميع الإنذارات مستقبلًا"],
+    correct:1,
+    why:"قد يكون الإنذار صحيحًا أو ناتجًا عن قراءة خاطئة؛ لذا نتحقق قبل الحكم."
+  },
+  {
+    level:"صعب وتحليلي", points:3,
+    q:"استخدمت المدرسة ذكاءً اصطناعيًا لترتيب المتقدمات لنشاط. كيف تقلل احتمال الظلم؟",
+    a:["أعتمد الترتيب الآلي دون مراجعة","أراجع المعايير والنتائج وأتحقق من التحيز مع حماية البيانات","أختار الأسماء عشوائيًا دون النظر للمعايير"],
+    correct:1,
+    why:"قد تتأثر الأنظمة بالتحيز أو الأخطاء؛ لذا تلزم المراجعة والشفافية."
+  },
+  {
+    level:"صعب وتحليلي", points:3,
+    q:"لاحظتِ أن حسابك أرسل رسائل لم تكتبيها، وما زلتِ قادرة على الدخول. ما أفضل استجابة؟",
+    a:["أتجاهل الأمر","أغير كلمة المرور من جهاز موثوق وأنهي الجلسات الغريبة وأفعل التحقق بخطوتين","أنشر كلمة مروري الجديدة"],
+    correct:1,
+    why:"هذه خطوات مهمة لاستعادة السيطرة على الحساب وتقليل الوصول غير المصرح به."
+  },
+  {
+    level:"صعب وتحليلي", points:3,
+    q:"نظام ذكاء اصطناعي يقترح أن رسالة ما احتيالية، لكنه لا يوضح السبب. كيف تتخذين قرارًا أفضل؟",
+    a:["أثق به دون فحص","أفحص عنوان المرسل والرابط ومحتوى الرسالة وأتحقق من مصدر مستقل","أعتبر كل الرسائل احتيالية"],
+    correct:1,
+    why:"نتائج الأنظمة الذكية مؤشرات وليست دليلًا قاطعًا؛ اجمعي الأدلة قبل القرار."
+  }
 ];
+
+let idx = 0;
+let score = 0;
+let correctCount = 0;
+let answered = false;
+
+function render() {
+  answered = false;
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("next").classList.add("hidden");
+
+  const item = data[idx];
+  document.getElementById("count").textContent =
+    `السؤال ${idx + 1} من ${data.length} · ${item.level} · ${item.points} ${item.points === 1 ? "نقطة" : "نقاط"}`;
+
+  document.getElementById("question").textContent = item.q;
+  document.getElementById("bar").style.width =
+    (idx / data.length * 100) + "%";
+
+  const box = document.getElementById("answers");
+  box.innerHTML = "";
+
+  item.a.forEach((text, n) => {
+    const button = document.createElement("button");
+    button.className = "answer";
+    button.textContent = text;
+    button.onclick = () => choose(n, button);
+    box.appendChild(button);
+  });
+}
+
+function choose(n, button) {
+  if (answered) return;
+  answered = true;
+
+  const item = data[idx];
+  const correct = n === item.correct;
+
+  if (correct) {
+    score += item.points;
+    correctCount++;
+  }
+
+  button.classList.add(correct ? "good" : "bad");
+
+  if (!correct) {
+    document.querySelectorAll(".answer")[item.correct]
+      .classList.add("good");
+  }
+
+  document.getElementById("feedback").textContent =
+    (correct
+      ? `✓ إجابة صحيحة! حصلتِ على ${item.points} ${item.points === 1 ? "نقطة" : "نقاط"}. `
+      : "✕ ليست الإجابة الصحيحة. ") + item.why;
+
+  document.getElementById("next").classList.remove("hidden");
+  document.getElementById("next").textContent =
+    idx === data.length - 1 ? "عرض النتيجة" : "السؤال التالي ←";
+}
+
+function nextQuestion() {
+  idx++;
+
+  if (idx < data.length) {
+    render();
+    return;
+  }
+
+  document.getElementById("quiz").classList.add("hidden");
+
+  let level =
+    score < 10 ? "مستكشفة التقنية" :
+    score < 20 ? "واعية رقميًا" :
+    score < 27 ? "محللة رقمية" :
+    "خبيرة الوعي الرقمي";
+
+  const result = document.getElementById("result");
+  result.classList.remove("hidden");
+
+  result.innerHTML = `
+    <div class="eyebrow">نتيجتك النهائية</div>
+    <h2 style="font-size:48px;margin:10px 0">${score}/30</h2>
+    <p>إجاباتك الصحيحة: <strong>${correctCount}/15</strong></p>
+    <h3>${level}</h3>
+    <p>أحسنتِ! الوعي الرقمي يجمع بين المعرفة والتحقق والتفكير قبل اتخاذ القرار.</p>
+    <button onclick="restart()">إعادة التجربة</button>
+  `;
+
+  document.getElementById("bar").style.width = "100%";
+}
+
+function restart() {
+  idx = 0;
+  score = 0;
+  correctCount = 0;
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  render();
+}
 let idx=0,score=0,answered=false;
 function render(){answered=false;document.getElementById("feedback").textContent="";document.getElementById("next").classList.add("hidden");document.getElementById("count").textContent=`السؤال ${idx+1} من ${data.length}`;document.getElementById("question").textContent=data[idx][0];document.getElementById("bar").style.width=(idx/data.length*100)+"%";let box=document.getElementById("answers");box.innerHTML="";data[idx][1].forEach((t,n)=>{let b=document.createElement("button");b.className="answer";b.textContent=t;b.onclick=()=>choose(n,b);box.appendChild(b)})}
 function choose(n,b){if(answered)return;answered=true;let correct=n===data[idx][2];if(correct)score++;b.classList.add(correct?"good":"bad");if(!correct)document.querySelectorAll(".answer")[data[idx][2]].classList.add("good");document.getElementById("feedback").textContent=(correct?"✓ إجابة صحيحة! ":"✕ الإجابة الأفضل: ")+data[idx][3];document.getElementById("next").classList.remove("hidden");document.getElementById("next").textContent=idx===data.length-1?"عرض النتيجة":"السؤال التالي ←"}
-function nextQuestion(){idx++;if(idx<data.length){render()}else{document.getElementById("quiz").classList.add("hidden");let level=score<=4?"بداية رقمية":score<=7?"واعية رقميًا":score<=9?"حارسة رقمية":"خبيرة الوعي الرقمي";let r=document.getElementById("result");r.classList.remove("hidden");r.innerHTML=`<div class="eyebrow">نتيجتك النهائية</div><h2 style="font-size:48px">${score}/10</h2><h3>${level}</h3><p>أحسنتِ! الوعي الرقمي يبدأ بخطوة، وكل معلومة تقرّبنا من استخدام أكثر أمانًا للتقنية.</p><button onclick="restart()">إعادة التجربة</button>`;document.getElementById("bar").style.width="100%"}}
-function restart(){idx=0;score=0;document.getElementById("result").classList.add("hidden");document.getElementById("quiz").classList.remove("hidden");render()}
+function nextQuestion(){idx++;if(idx<data.length){render()}else{document.getElementById("quiz").classList.add("hidden");let level=score<=4?"بداية رقمية":score<=7?"واعية رقميًا":score<=9?"حارسة رقمية":"خبيرة الوعي الرقمي";let r=document.getElementById("result");r.classList.remove("hidden");r.innerHTML=`<div class="eyebrow">نتيجتك النهائية</div><h2 style="font-size:48px">${score}/10</h2><h3>${level}</h3><p>أحسنتِ! الوعي الرقمي يبدأ بخطوة، وكل معلومة تقرّبنا من استخدام أكثر أمانًا للتقنية.</p><button onclick="restart()">إعادة التجربة</button>`;document.getElementById(");render()}
 const tips=["فعّلي التحقق بخطوتين لحساباتك المهمة.","لا تضغطي على الروابط قبل التحقق من مصدرها.","لا تشاركي كلمات المرور مع أي شخص.","راجعي إعدادات الخصوصية في حساباتك.","تحققي من المعلومات المهمة التي يقدمها الذكاء الاصطناعي."];let ti=0;document.getElementById("tip").textContent=tips[0];function newTip(){ti=(ti+1)%tips.length;document.getElementById("tip").textContent=tips[ti]}render();
 </script>
 </body>
